@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const Register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
     const user = await User.findOne({ email });
 
     if (user) {
@@ -13,7 +13,7 @@ const Register = async (req, res) => {
 
     const token = jwt.sign(email, process.env.SECRET);
     const hash = await bcrypt.hash(password, 10);
-    const newUser = await User.create({ name, email, password: hash });
+    const newUser = await User.create({ name, email, password: hash, role });
     res.json({ newUser, token });
   } catch (e) {
     console.error(e.message);
