@@ -16,11 +16,13 @@ const LoginRoute = require("./routes/LoginRoute");
 const RegisterRoute = require("./routes/RegisterRoute");
 const verifyToken = require("./Middleware/middleware");
 const RecipeRoute = require("./routes/RecipeRoute");
+const CommentRoute = require("./routes/commentRoute");
 const ForgotPassword = require("./routes/forgotPassword");
 
 app.use("/auth", LoginRoute);
 app.use("/auth", RegisterRoute);
 app.use("/auth", RecipeRoute);
+app.use("/auth", CommentRoute);
 app.use("/auth", router);
 app.use("/auth", ForgotPassword);
 
